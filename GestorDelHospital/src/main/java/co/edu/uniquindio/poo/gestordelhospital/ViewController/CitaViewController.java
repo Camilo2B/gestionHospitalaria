@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.gestordelhospital.ViewController;
 
+import co.edu.uniquindio.poo.gestordelhospital.Model.Hospital;
 import co.edu.uniquindio.poo.gestordelhospital.Model.Medico;
 import co.edu.uniquindio.poo.gestordelhospital.Model.Paciente;
 import javafx.collections.FXCollections;
@@ -36,9 +37,13 @@ public class CitaViewController {
     @FXML
     private ComboBox<Medico> comboMedicos;
 
+    @FXML
+    private Hospital hospital;
+
     // Listas de pacientes y médicos
     private ObservableList<Paciente> pacientes;
     private ObservableList<Medico> medicos;
+
 
     @FXML
     public void initialize() {
@@ -48,8 +53,6 @@ public class CitaViewController {
 
         // Vincular la lista observable con el ListView
         listaPacientes.setItems(pacientes);
-
-
 
         // Llenar los ComboBox con las listas de pacientes y médicos
         comboPacientes.setItems(pacientes);
@@ -120,5 +123,29 @@ public class CitaViewController {
             alert.showAndWait();
             e.printStackTrace();
         }
+    }
+
+    public Label getTxtCedulaLista() {
+        return txtCedulaLista;
+    }
+
+    public void setTxtCedulaLista(Label txtCedulaLista) {
+        this.txtCedulaLista = txtCedulaLista;
+    }
+
+    public Label getTxtEdadLista() {
+        return txtEdadLista;
+    }
+
+    public void setTxtEdadLista(Label txtEdadLista) {
+        this.txtEdadLista = txtEdadLista;
+    }
+
+    public Label getTxtMedicoLista() {
+        return txtMedicoLista;
+    }
+
+    public void setTxtMedicoLista(Label txtMedicoLista) {
+        this.txtMedicoLista = txtMedicoLista;
     }
 }

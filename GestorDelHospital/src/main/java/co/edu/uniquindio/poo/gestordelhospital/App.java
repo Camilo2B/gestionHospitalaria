@@ -1,20 +1,10 @@
 
 package co.edu.uniquindio.poo.gestordelhospital;
-import co.edu.uniquindio.poo.gestordelhospital.Model.Hospital;
-import co.edu.uniquindio.poo.gestordelhospital.Model.Medico;
-import co.edu.uniquindio.poo.gestordelhospital.Model.Paciente;
-import co.edu.uniquindio.poo.gestordelhospital.ViewController.MedicoViewController;
-import co.edu.uniquindio.poo.gestordelhospital.ViewController.PacienteViewController;
-import co.edu.uniquindio.poo.gestordelhospital.ViewController.MenuViewController;
-import co.edu.uniquindio.poo.gestordelhospital.ViewController.WelcomeViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.time.LocalDate;
 
 public class App extends Application {
     @Override
