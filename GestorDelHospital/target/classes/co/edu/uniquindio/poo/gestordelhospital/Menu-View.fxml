@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.gestordelhospital.ViewController.MenuViewController">
+   <children>
+      <!-- Título del menú -->
+      <Label layoutX="250.0" layoutY="50.0" text="Menú Principal" style="-fx-font-size: 20; -fx-font-weight: bold;" />
+
+      <!-- Botones para navegar a las diferentes vistas -->
+      <VBox layoutX="250.0" layoutY="100.0" spacing="10">
+         <Button mnemonicParsing="false" onAction="#cambiarVistaPacientes" text="Ver Pacientes" prefWidth="100" />
+         <Button mnemonicParsing="false" onAction="#cambiarVistaMedicos" text="Ver Médicos" prefWidth="100" />
+         <Button mnemonicParsing="false" onAction="#cambiarVistaCitas" text="Ver Citas" prefWidth="100" />
+      </VBox>
+
+      <!-- Mensaje de bienvenida o información -->
+      <Label fx:id="txtMenuMensaje" layoutX="50.0" layoutY="350.0" text="Bienvenido al sistema de gestión hospitalaria" />
+   </children>
+</AnchorPane>

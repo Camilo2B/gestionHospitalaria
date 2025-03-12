@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.gestordelhospital.ViewController.CitaViewController">
+   <children>
+      <!-- Labels para mostrar la información -->
+      <Label fx:id="txtNombreLista" layoutX="50" layoutY="20" text="Nombre:" />
+      <Label fx:id="txtCedulaLista" layoutX="50" layoutY="50" text="Cédula:" />
+      <Label fx:id="txtEdadLista" layoutX="50" layoutY="80" text="Edad:" />
+      <Label fx:id="txtMedicoLista" layoutX="50" layoutY="110" text="Médico:" />
+
+      <!-- ListView para mostrar la lista de pacientes -->
+      <ListView fx:id="listaPacientes" layoutX="200" layoutY="20" prefWidth="300" prefHeight="150">
+         <placeholder>
+            <Label text="No hay pacientes registrados" />
+         </placeholder>
+      </ListView>
+
+      <!-- ComboBox para seleccionar pacientes -->
+      <Label layoutX="200" layoutY="180" text="Seleccionar Paciente:" />
+      <ComboBox fx:id="comboPacientes" layoutX="200" layoutY="200" prefWidth="300">
+         <placeholder>
+            <Label text="No hay pacientes disponibles" />
+         </placeholder>
+      </ComboBox>
+
+      <!-- ComboBox para seleccionar médicos -->
+      <Label layoutX="200" layoutY="240" text="Seleccionar Médico:" />
+      <ComboBox fx:id="comboMedicos" layoutX="200" layoutY="260" prefWidth="300">
+         <placeholder>
+            <Label text="No hay médicos disponibles" />
+         </placeholder>
+      </ComboBox>
+
+      <!-- Botón para regresar al menú principal -->
+      <Button layoutX="50" layoutY="350" mnemonicParsing="false" onAction="#volverPantalla" text="Regresar" />
+   </children>
+</AnchorPane>
