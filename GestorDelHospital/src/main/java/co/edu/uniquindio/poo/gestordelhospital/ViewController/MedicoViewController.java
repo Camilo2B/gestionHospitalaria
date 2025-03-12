@@ -1,6 +1,9 @@
 package co.edu.uniquindio.poo.gestordelhospital.ViewController;
 
 import co.edu.uniquindio.poo.gestordelhospital.Model.Medico;
+import co.edu.uniquindio.poo.gestordelhospital.Model.Paciente;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,46 +23,52 @@ public class MedicoViewController {
     private TextField txtEdadMedico;
 
     @FXML
+    TextField txtNumMaxPacMedico;
+
+    @FXML
     private TextField txtCargoMedico;
 
-    private MenuViewController menuController;
-
-    public void setMenuController(MenuViewController menuController) {
-        this.menuController = menuController;
-    }
+    private ObservableList<Medico> listaMedicos = FXCollections.observableArrayList();
 
     @FXML
     protected void guardarMedico() {
+
+        Medico medico = new Medico(txtNombreMedico.getText(), Integer.parseInt(txtEdadMedico.getText()), txtCedulaMedico.getText(), Integer.parseInt(txtNumMaxPacMedico.getText()), txtCargoMedico.getText());
+        System.out.println(medico.toString());
+
+        listaMedicos.add(medico);
+
+
+        System.out.println("Medico Guardado: " + medico.toString());
+
+    }
+
+    @FXML
+    protected void irACitas() {
         try {
-            // Crear un nuevo médico con los datos ingresados
-            Medico medico = new Medico(txtNombreMedico.getText(), Integer.parseInt(txtEdadMedico.getText()), txtCedulaMedico.getText(), Integer.parseInt(txt));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/gestordelhospital/Cita-View.fxml"));
+            Parent root = loader.load();
 
-            // Verificar que el controlador del menú no sea nulo
-            if (menuController != null) {
-                // Agregar el médico a la lista en el controlador del menú
-                menuController.agregarMedico(medico);
+            // Obtener el controlador de la nueva vista
+            CitaViewController citaController = loader.getController();
+            citaController.setListaMedicos(listaMedicos); // Pasar la lista de médicos
 
-                // Mostrar mensaje de éxito
-                mostrarMensaje("Médico guardado correctamente.");
-
-                // Limpiar los campos después de guardar
-                limpiarCampos();
-            } else {
-                mostrarError("No se pudo acceder al menú principal.");
-            }
-        } catch (NumberFormatException e) {
-            mostrarError("La edad debe ser un número válido.");
+            // Cambiar la escena actual
+            Scene scene = txtNombreMedico.getScene();
+            scene.setRoot(root);
         } catch (Exception e) {
-            mostrarError("Ocurrió un error al guardar el médico.");
             e.printStackTrace();
         }
     }
+
+
+
 
     @FXML
     protected void volverPantalla() {
         try {
             // Cargar la vista del menú principal
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/gestordelhospital/MenuView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/gestordelhospital/Menu-View.fxml"));
             Parent root = loader.load();
 
             // Obtener la escena actual
@@ -68,31 +77,18 @@ public class MedicoViewController {
             // Cambiar la escena actual por la nueva
             scene.setRoot(root);
         } catch (Exception e) {
-            mostrarError("No se pudo cargar la pantalla anterior. Por favor, inténtelo de nuevo.");
-            e.printStackTrace();
+            // Mostrar mensaje de error al usuario
+
         }
+
     }
 
-    private void mostrarMensaje(String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Éxito");
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
+    // Método para obtener la lista de medicos
+    public ObservableList<Medico> getListaMedicos() {
+        return listaMedicos;
     }
 
-    private void mostrarError(String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
-
-    private void limpiarCampos() {
-        txtNombreMedico.clear();
-        txtCedulaMedico.clear();
-        txtEdadMedico.clear();
-        txtCargoMedico.clear();
-    }
 }
+
+
+

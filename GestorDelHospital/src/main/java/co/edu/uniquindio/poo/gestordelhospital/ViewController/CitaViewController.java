@@ -49,6 +49,8 @@ public class CitaViewController {
         // Vincular la lista observable con el ListView
         listaPacientes.setItems(pacientes);
 
+
+
         // Llenar los ComboBox con las listas de pacientes y médicos
         comboPacientes.setItems(pacientes);
         comboMedicos.setItems(medicos);
@@ -61,7 +63,7 @@ public class CitaViewController {
             System.out.println("Advertencia: La lista de pacientes es nula. Se inicializará una lista vacía.");
             pacientes = FXCollections.observableArrayList();
         }
-        this.pacientes = pacientes;
+        this.pacientes = listaPacientes.getItems();
         listaPacientes.setItems(this.pacientes);
         comboPacientes.setItems(this.pacientes);
     }
@@ -75,6 +77,10 @@ public class CitaViewController {
         this.medicos = medicos;
         comboMedicos.setItems(this.medicos);
     }
+
+
+
+
 
     // Método para agregar un paciente a la lista
     public void agregarPaciente(Paciente paciente) {

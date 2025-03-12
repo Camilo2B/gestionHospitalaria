@@ -1,6 +1,10 @@
+
 package co.edu.uniquindio.poo.gestordelhospital.Model;
 
+import java.util.LinkedList;
+
 public class Paciente extends Persona implements Cloneable{
+
 
     public Paciente(String nombre, String cedula, int edad) {
         super(nombre, edad, cedula);
